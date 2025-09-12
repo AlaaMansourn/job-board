@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BlogPostRequest;
+
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -31,23 +33,18 @@ return view("post.index",["posts"=>$data,"pageTitle"=>"blog"]);
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BlogPostRequest $request)
     {
 
-        $validated = $request->validate([
-
-            'title'=>'required',
-            'author'=>'required',
-            'body'=>'required',
-
-
+        $post = new Post();
+        $post->body = $request->input('body');
+        $post->title = $request->input('title');
+        $post->author = $request->input('author');
+        $post->published = $request->has('published');
 
 
-
-
-
-        ]);
-        print_r($request->all());
+        $post->save();
+        return redirect("/blog");
 
     }
 

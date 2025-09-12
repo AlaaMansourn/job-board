@@ -16,6 +16,7 @@ Route::get("/job",[JobController::class,"index"]);
 
 
 Route::resource("/blog",PostController::class)->except(['destroy']);
+
 Route::resource("/comment",CommentController::class);
 Route::resource("/tag",TagController::class);
 
