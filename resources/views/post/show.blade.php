@@ -1,0 +1,10 @@
+<x-layout :title="$pageTitle">
+
+
+<h2>{{$post->title}}</h2>
+<h2>{{$post->body}}</h2>
+
+
+
+
+</x-layout>
