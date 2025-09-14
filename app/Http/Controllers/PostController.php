@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BlogPostRequest;
 
 use App\Models\Post;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $data = Post::cursorPaginate(5);
+        $data = Post::latest()->paginate(5);
 
 
 return view("post.index",["posts"=>$data,"pageTitle"=>"blog"]);
@@ -44,7 +45,7 @@ return view("post.index",["posts"=>$data,"pageTitle"=>"blog"]);
 
 
         $post->save();
-        return redirect("/blog");
+        return redirect("/blog")->with("success","Post successfully saved");
 
     }
 

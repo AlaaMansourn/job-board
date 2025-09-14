@@ -1,4 +1,10 @@
 <x-layout :title="$pageTitle">
+    @if(session("success"))
+        <div class ="bg-green-50 px-3 py-6">
+            {{ session("success") }}
+
+        </div>
+    @endif
 
 <div class="mt-6 flex items-center justify-end gap-x-6">
 

@@ -21,7 +21,7 @@ class BlogPostRequest extends FormRequest
     {
         return [
 
-            'title'=>'required',
+            'title'=>'bail|required|unique:post,title',
             'author'=>'required',
             'body'=>'required',
         ];
@@ -34,8 +34,10 @@ class BlogPostRequest extends FormRequest
 
         return [
             'title.required'=>'mandatory field',
+
             'author.required'=>'mandatory field',
             'body.required'=>'mandatory field',
+
 
         ];
 
